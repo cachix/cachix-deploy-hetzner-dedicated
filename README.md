@@ -28,7 +28,7 @@ From the email your received when the Hetzner machine was processed, take IP and
 
 ```shell-session
 $ nix develop
-$ cachix-deploy-bootstrap-hetzner yourip myagent ./cachix-agent.token
+$ bootstrap-hetzner yourip myagent ./cachix-agent.token
 ```
 
 Once the script finishes, your machine should come up in a few minutes.
