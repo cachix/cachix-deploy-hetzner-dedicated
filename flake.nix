@@ -24,6 +24,8 @@
             networking.hostName = hostname;
             disko.devices = import "${disko}/example/mdadm.nix" { inherit disks; };
             boot.loader.grub.devices = disks;
+            # enable nvme https://github.com/nix-community/disko/issues/96
+            boot.initrd.availableKernelModules = [ "nvme" ];
             
             # add root ssh key
             users.users.root.openssh.authorizedKeys.keys = [ sshPubKey ];
