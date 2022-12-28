@@ -83,7 +83,8 @@
 
           ${nixos-remote.packages.${system}.default}/bin/nixos-remote "root@$IP" --flake ".#$agent"
 
-          scp $agenttokenpath root@$IP:/etc/cachix-agent.token
+          echo "Waiting for machine to reboot..."
+          until scp -o ConnectTimeout=10 $agenttokenpath root@$IP:/etc/cachix-agent.token; do sleep 5; done
           ssh root@$IP systemctl restart cachix-agent
 
           echo "Done."
