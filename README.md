@@ -5,8 +5,6 @@ the best price/performance.
 
 Since these machines are bare metal, setting them up comes up with a cost - no more!
 
-
-
 This setup uses a single command to bootstrap a machine and was tested using
 [AX51-NVMe](https://www.hetzner.com/dedicated-rootserver/ax51-nvme),
 but any machine with two SSDs should work.
@@ -32,7 +30,9 @@ It will set up a machine using raid1 and ext4 for the root filesystem.
 
 ## Bootstrapping the machine
 
-From the email your received when the Hetzner machine was processed, take IP and replace it in `yourip`:
+Clone this repo and make sure to set `sshPubKey` in `flake.nix` with your public SSH key.
+
+From the email you received when the Hetzner machine was processed, take IP and replace it in `yourip`:
 
 ```shell-session
 $ nix develop -c bootstrap-hetzner yourip myagent ./cachix-agent.token

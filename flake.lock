@@ -3,14 +3,17 @@
     "cachix-deploy-flake": {
       "inputs": {
         "darwin": "darwin",
-        "home-manager": "home-manager"
+        "disko": "disko",
+        "home-manager": "home-manager",
+        "nixos-remote": "nixos-remote",
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1671963878,
-        "narHash": "sha256-2nxdU2Hv7aZOU4sA8JKJmDW+oqCtEYFR+DVwSUrtMHQ=",
+        "lastModified": 1672314203,
+        "narHash": "sha256-pP/1pjq9A7TIlOjHOTj73VdU6bAPqm3ofdJbK1L51k8=",
         "owner": "cachix",
         "repo": "cachix-deploy-flake",
-        "rev": "888441ec33be09afb4f577fe8f6a8c44fce07cbe",
+        "rev": "b5086071c34900fe5ab17090bf9a9b4c320de287",
         "type": "github"
       },
       "original": {
@@ -40,6 +43,7 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
+          "cachix-deploy-flake",
           "nixpkgs"
         ]
       },
@@ -59,7 +63,10 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": [
+          "cachix-deploy-flake",
+          "nixpkgs"
+        ],
         "utils": "utils"
       },
       "locked": {
@@ -114,10 +121,12 @@
     "nixos-remote": {
       "inputs": {
         "disko": [
+          "cachix-deploy-flake",
           "disko"
         ],
         "nixos-images": "nixos-images",
         "nixpkgs": [
+          "cachix-deploy-flake",
           "nixpkgs"
         ]
       },
@@ -167,27 +176,25 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1671200928,
-        "narHash": "sha256-mZfzDyzojwj6I0wyooIjGIn81WtGVnx6+avU5Wv+VKU=",
-        "owner": "nixos",
+        "lastModified": 1672249180,
+        "narHash": "sha256-ipos/gTMHqxS39asqNWEJZ7nXdcTHa0TB0AIZXkGapg=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "757b82211463dd5ba1475b6851d3731dfe14d377",
+        "rev": "e58a7747db96c23b8a977e7c1bbfc5753b81b6fa",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "type": "indirect"
       }
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1672189105,
-        "narHash": "sha256-X//0p1bO07KTU5+HEmPIWIypKGEFc9nBZ2c4sKh0hg4=",
+        "lastModified": 1672249180,
+        "narHash": "sha256-ipos/gTMHqxS39asqNWEJZ7nXdcTHa0TB0AIZXkGapg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8f08140d734c9b07dde8ac591d6baf158134a7a1",
+        "rev": "e58a7747db96c23b8a977e7c1bbfc5753b81b6fa",
         "type": "github"
       },
       "original": {
@@ -198,8 +205,6 @@
     "root": {
       "inputs": {
         "cachix-deploy-flake": "cachix-deploy-flake",
-        "disko": "disko",
-        "nixos-remote": "nixos-remote",
         "nixpkgs": "nixpkgs_3"
       }
     },
