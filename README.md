@@ -49,7 +49,7 @@ In case anything goes wrong, you can order a remote console via the `Support` ta
 
 Your machine is running a plain NixOS configuration.
 
-To deploy any changes from `main` branch you'll need to configure a few things in ``.github/workflows/deploy.yml`:
+To deploy any changes from `main` branch you'll need to configure a few things in `.github/workflows/deploy.yml`:
 
 - `myagent`: if you picked a different agent/hostname, change it here
 - `CACHE_NAME`: change `mycustomcache` into the name of the cache you created.
