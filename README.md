@@ -7,7 +7,9 @@ Since these machines are bare metal, setting them up comes up with a cost - no m
 
 This setup uses a single command to bootstrap a machine and was tested using
 [AX51-NVMe](https://www.hetzner.com/dedicated-rootserver/ax51-nvme),
-but any machine with two SSDs should work.
+but any machine with two SSDs should work. 
+
+Please contact [domen@cachix.org](mailto:domen@cachix.org) if you're having a different machine configuration or need support.
 
 It will set up a machine using raid1 and ext4 for the root filesystem.
 
