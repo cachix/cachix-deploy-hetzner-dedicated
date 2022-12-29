@@ -32,7 +32,7 @@
         in {
         default = cachix-deploy-lib.spec {
             agents = {
-              myagent = cachix-deploy-lib.nixos {
+              "${machineName}" = cachix-deploy-lib.nixos {
                 imports = [ bootstrapNixOS.module ];
 
                 config = {
