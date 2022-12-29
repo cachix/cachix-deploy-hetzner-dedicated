@@ -1,0 +1,32 @@
+name: Build & Deploy
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+env:
+  CACHE_NAME: mycustomcache
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo rm -rf /opt&
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v18
+      - uses: cachix/cachix-action@v12
+        with:
+          name: "${{ env.CACHE_NAME }}"
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Build 
+        run: nix build -L
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        env:
+          CACHIX_ACTIVATE_TOKEN: "${{ secrets.CACHIX_ACTIVATE_TOKEN }}"
+        run: |
+          cachix push $CACHE_NAME ./result
+          # --agent is needed due to a regression in Cachix 1.1, which will be fixed in Cachix 1.2
+          cachix deploy activate --agent myagent ./result
+

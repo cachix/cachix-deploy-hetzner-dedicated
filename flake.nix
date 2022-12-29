@@ -36,7 +36,7 @@
                 imports = [ bootstrapNixOS.module ];
 
                 config = {
-
+                  # here comes all your NixOS configuration
                 };
               };
             };
