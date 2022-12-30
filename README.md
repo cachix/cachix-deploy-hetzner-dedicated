@@ -57,3 +57,22 @@ To deploy any changes from `main` branch you'll need to configure a few things i
 - `CACHE_NAME`: change `mycustomcache` into the name of the cache you created.
 - `CACHIX_AUTH_TOKEN`: in [Cachix](https://app.cachix.org/), find your cache via settings and create a write auth token. Go to your git repository, click `Settings`, click `Secrets`, click `Actions` and add it as a repository setting.
 - `CACHIX_ACTIVATE_TOKEN` in [Cachix Deploy](https://app.cachix.org/deploy), click on your newly created workspace and click "Start a deployment" to generate an token. Go to your git repository, click `Settings`, click `Secrets`, click `Actions` and add it as a repository setting.
+
+## Setting up self-hosted GitHub runners
+
+Assuming your github organization is called `myorg`, here's the NixOS configuration:
+
+```
+nix.trustedUsers = [ "root" "github-runner-myorg" ];
+
+systemd.services.github-runner-myorg.serviceConfig.ReadWritePaths = [ "/nix/var/nix/profiles/per-user/" ];
+
+services.github-runners.myorg = {
+    enable = true;
+    url = "https://github.com/myorg";
+    tokenFile = "/etc/secrets/github-runner/myorg.token";
+    extraPackages = [ pkgs.cachix ];
+};
+```
+
+And then go to (make sure to replace myorg with the organization's name) https://github.com/organizations/myorg/settings/actions/runners and copy the token to `/etc/secrets/github-runner/myorg.token`.
